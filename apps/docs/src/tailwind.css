@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind variants;
+@tailwind components;
+
+
+a {
+	@apply underline;
+}
+
+*::selection {
+	background: #00ffa7;
+	color: black;
+}
+
+
+
+#subject {
+	--text: "Sentence Parser";
+	--animation-duration: 1s;
+	--animation-delay: .2s;
+	color: transparent;
+}
+
+
+#subject::before {
+	inset: 0;
+	position: absolute;
+	content: var(--text);
+	color: #00ffa7;
+	animation: slideIn var(--animation-duration) cubic-bezier(.755,.05,.855,.06) forwards var(--animation-delay);
+	clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+}
+
+#subject::after {
+	content: var(--text);
+	position: absolute;
+	inset: 0;
+	color: black;
+	animation: slide_in var(--animation-duration) cubic-bezier(.23,1,.32,1) forwards calc(var(--animation-duration) + var(--animation-delay));
+	clip-path: polygon(30% 0%, 80% 100%, 80% 100%, 30% 0%);
+}
+
+
+.dark #subject::after {
+	color: #00ffa7;
+}
+
+.dark #subject::before {
+	color: white;
+}
+
+
+.fade-in-up {
+	opacity: 0;
+	transform: translateY(10px);
+
+	animation: fade-in-up .3s ease-in-out forwards 1s;
+}
+
+@keyframes fade-in-up {
+	0% {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+
+@keyframes slideIn {
+  from {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+
+  to {
+    clip-path: polygon(0% 0%, 0% 100%, 80% 100%, 30% 0%);
+  }
+}
+
+@keyframes slide_in {
+  from {
+    clip-path: polygon(30% 0%, 80% 100%, 80% 100%, 30% 0%);
+  }
+
+  to {
+    /* clip-path: polygon(100% 0%, 100% 100%, 80% 100%, 30% 0%); */
+	clip-path: polygon(90.23% -15.46%, 132.77% 93.82%, 80% 100%, 30% 0%);
+  }
+}
+
+
+
+@keyframes slide-in-from-left {
+	from {
+		clip-path: polygon(
+			0% 0%,
+			0% 100%,
+
+			0% 100%,
+			0% 0%
+		);
+	}
+
+	to {
+		clip-path: polygon(
+			0% 0%,
+			0% 100%,
+
+			0% 100%,
+			50% 0%
+		);
+	}
+}
+
+@keyframes slide-in-from-left-2 {
+	from {
+		clip-path: polygon(
+			50% 0%,
+			0% 100%,
+
+			0% 100%,
+			50% 0%
+		);
+	}
+
+	to {
+	/* clip-path: polygon(50% 0%,0% 100%,100% 100%,100% 0%); */
+
+		clip-path: polygon(
+			50% 0%,
+			0% 100%,
+
+			0% 100%,
+			500% 0%
+		);
+	}
+}

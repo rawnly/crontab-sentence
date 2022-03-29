@@ -1,0 +1,7 @@
+.vercel
+.DS_Store
+node_modules
+
+apps/**/dist
+apps/**/.next
+apps/**/.turbo
