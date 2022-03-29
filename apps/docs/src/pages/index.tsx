@@ -87,7 +87,7 @@ const Page: NextPage<PageProps> = _ => {
 
 				<div className='left-1/2 bottom-5 absolute -translate-x-1/2'>
 					<span className='fade-in'>
-						Made with a <a className='hover:opacity-50' target={'_blank'} href='https://github.com/rawnly/crontab-sentence'>regex</a> by <a href="https://fedevitale.dev" className='dark:text-[#00ffa7] hover:opacity-50 text-[#00c079]' target={'_blank'}>@fedevitale</a>
+						Made with a <a className='hover:opacity-50' target={'_blank'} href='https://github.com/Rawnly/crontab-sentence/blob/master/apps/syntax/src/index.ts#L5'>regex</a> by <a href="https://fedevitale.dev" className='dark:text-[#00ffa7] hover:opacity-50 text-[#00c079]' target={'_blank'}>@fedevitale</a>
 					</span>
 				</div>
 
