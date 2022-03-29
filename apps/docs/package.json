@@ -11,12 +11,12 @@
   "dependencies": {
     "autoprefixer": "^10.4.4",
     "clsx": "^1.1.1",
+    "crontab-sentence": "^0.0.1",
     "next": "^12.1.0",
     "postcss": "^8.4.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-toast": "^2.2.0",
-    "tailwind-radix-colors": "../syntax",
     "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
