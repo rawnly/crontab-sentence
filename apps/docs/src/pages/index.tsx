@@ -58,7 +58,7 @@ const Page: NextPage<PageProps> = _ => {
 
 	const themeMeta = useMemo( () => ( {
 		name: 'theme-color',
-		content: darkMode.enabled ? 'black' : 'white'
+		content: darkMode.enabled ? '#000000' : '#F8FAFC'
 	} ), [darkMode.enabled] )
 
 	return (
