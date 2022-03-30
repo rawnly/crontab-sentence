@@ -11,7 +11,8 @@ describe( 'parseSentence', () => {
 			'every week',
 			'every month',
 			'every tuesday',
-			'every tuesday at 11'
+			'every tuesday at 11',
+			'every day at 22'
 		].map( parseSentence )
 
 		const expected = [
@@ -23,6 +24,7 @@ describe( 'parseSentence', () => {
 			'* * * */1 *',
 			'* * * * */2',
 			'* 11 * * */2',
+			'* 22 */1 * *',
 		]
 
 
