@@ -2,14 +2,31 @@ import { parseSentence } from '../src';
 
 
 describe( 'parseSentence', () => {
-	it( 'should handle simple sentence', () => {
-		const result = parseSentence( 'at 11am every monday' )
-		expect( result ).toBe( '* 11 * * */1' )
-	} )
+	it( 'should handle simple sentences', () => {
+		const sentences = [
+			'at 11',
+			'at 11:00',
+			'every hour',
+			'every 2 hours',
+			'every week',
+			'every month',
+			'every tuesday',
+			'every tuesday at 11'
+		].map( parseSentence )
 
-	it( 'should handle just time', () => {
-		const result = parseSentence( 'at 15' )
-		expect( result ).toBe( '* 15 * * *' )
+		const expected = [
+			'* 11 * * *',
+			'00 11 * * *',
+			'* */1 * * *',
+			'* */2 * * *',
+			'* * */7 * *',
+			'* * * */1 *',
+			'* * * * */2',
+			'* 11 * * */2',
+		]
+
+
+		expect( sentences ).toStrictEqual( expected )
 	} )
 
 	it( 'should handle simple sentence', () => {
