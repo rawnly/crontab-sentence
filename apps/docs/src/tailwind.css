@@ -10,7 +10,7 @@ a {
 
 *::selection {
 	background: #00ffa7;
-	color: black;
+	@apply text-zinc-900;
 }
 
 
@@ -27,7 +27,7 @@ a {
 	inset: 0;
 	position: absolute;
 	content: var(--text);
-	color: #00ffa7;
+	color: #00c079;
 	animation: slideIn var(--animation-duration) cubic-bezier(.755,.05,.855,.06) forwards var(--animation-delay);
 	clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
 }
@@ -36,9 +36,10 @@ a {
 	content: var(--text);
 	position: absolute;
 	inset: 0;
-	color: black;
 	animation: slide_in var(--animation-duration) cubic-bezier(.23,1,.32,1) forwards calc(var(--animation-duration) + var(--animation-delay));
 	clip-path: polygon(30% 0%, 80% 100%, 80% 100%, 30% 0%);
+
+	@apply text-zinc-900;
 }
 
 
@@ -47,7 +48,7 @@ a {
 }
 
 .dark #subject::before {
-	color: white;
+	@apply text-zinc-50;
 }
 
 

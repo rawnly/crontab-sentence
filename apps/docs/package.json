@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.4",
+    "classnames": "^2.3.1",
     "clsx": "^1.1.1",
     "crontab-sentence": "0.0.2",
     "next": "^12.1.0",

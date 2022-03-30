@@ -1,8 +1,8 @@
 Arguments: 
-  /opt/homebrew/Cellar/node/17.7.2/bin/node /opt/homebrew/bin/yarn add crontab-sentence
+  /opt/homebrew/Cellar/node/17.7.2/bin/node /opt/homebrew/lib/node_modules/yarn/lib/cli.js add @types/clsx -D
 
 PATH: 
-  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/federicovitale/.cargo/bin:/Users/federicovitale/.local/bin:/Users/federicovitale/Library/Python/3.8/bin:/Users/federicovitale/shell/git-commands:/Users/federicovitale/.go/bin:/Users/federicovitale/.yarn/bin
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/federicovitale/.cargo/bin:/Users/federicovitale/.local/bin:/Users/federicovitale/Library/Python/3.8/bin:/Users/federicovitale/shell/git-commands:/Users/federicovitale/.go/bin:/Users/federicovitale/.yarn/bin:/Users/federicovitale/.local/bin:/Users/federicovitale/Library/Python/3.8/bin:/Users/federicovitale/shell/git-commands:/Users/federicovitale/.go/bin:/Users/federicovitale/.yarn/bin
 
 Yarn version: 
   1.22.18
@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/crontab-sentence: Not found
+  Error: https://registry.yarnpkg.com/@types%2fclsx: Not found
       at Request.params.callback [as _callback] (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:66138:18)
       at Request.self.callback (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (node:events:527:28)
@@ -40,12 +40,12 @@ npm manifest:
     "dependencies": {
       "autoprefixer": "^10.4.4",
       "clsx": "^1.1.1",
+      "crontab-sentence": "0.0.2",
       "next": "^12.1.0",
       "postcss": "^8.4.12",
       "react": "^17.0.2",
       "react-dom": "^17.0.2",
       "react-hot-toast": "^2.2.0",
-      "tailwind-radix-colors": "^0.0.1",
       "tailwindcss": "^3.0.23"
     },
     "devDependencies": {
@@ -644,11 +644,6 @@ Lockfile:
     dependencies:
       "@nodelib/fs.scandir" "2.1.5"
       fastq "^1.6.0"
-  
-  "@radix-ui/colors@^0.1.8":
-    version "0.1.8"
-    resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.8.tgz#b08c62536fc462a87632165fb28e9b18f9bd047e"
-    integrity sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==
   
   "@sinonjs/commons@^1.7.0":
     version "1.8.3"
@@ -2422,6 +2417,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
     integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
   
+  next-seo@^5.3.0:
+    version "5.3.0"
+    resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.3.0.tgz#35a8c3ebb9898fd2ac4c8208de360feed3756bf8"
+    integrity sha512-ofXUGGZ4l6j4oCxu6aecTWTkNbN/g+zbYUOvLRBKl96bJrt+WWyo4riRxQqqczvk1niGH4ibN7cCEwVjlYZs2g==
+  
   next@^12.1.0:
     version "12.1.0"
     resolved "https://registry.yarnpkg.com/next/-/next-12.1.0.tgz#c33d753b644be92fc58e06e5a214f143da61dd5d"
@@ -2978,14 +2978,6 @@ Lockfile:
     version "3.2.4"
     resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
     integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
-  
-  tailwind-radix-colors@^0.0.1:
-    version "0.0.1"
-    resolved "https://registry.yarnpkg.com/tailwind-radix-colors/-/tailwind-radix-colors-0.0.1.tgz#58b5a21c53965c82923d90c0d9066086a7bf572f"
-    integrity sha512-IfEg6YAr5bBrY2w7J66wXHiIzscpUAAZbsetBw2TWyxrY/wS0cdCbsjUJZZ1sKuDVP/o+o88d/o5qJBT2FfUzg==
-    dependencies:
-      "@radix-ui/colors" "^0.1.8"
-      tailwindcss "^3.0.23"
   
   tailwindcss@^3.0.23:
     version "3.0.23"

@@ -1,10 +1,11 @@
-import { CopyIcon } from '@components/icons';
+import { CopyIcon, RefreshIcon } from '@components/icons';
 import ThemeSwitch from '@components/ThemeSwitch';
 import sentenceToCron from 'crontab-sentence';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
+import cx from 'classnames'
 import useDarkMode from 'src/hooks/useDarkMode';
 
 const sentences = [
@@ -20,7 +21,6 @@ const sentences = [
 
 interface PageProps { }
 
-
 export const copyToClipboard = async ( text: string ) => {
 	if ( typeof window === 'undefined' ) return null
 
@@ -30,7 +30,7 @@ export const copyToClipboard = async ( text: string ) => {
 			duration: 1250,
 			position: 'top-center',
 			icon: <CopyIcon />,
-			className: 'dark:text-black dark:bg-white text-black bg-white'
+			className: '!text-zinc-200 !bg-zinc-900'
 		} )
 	} else {
 		return document.execCommand( 'copy', true, text );
@@ -39,26 +39,21 @@ export const copyToClipboard = async ( text: string ) => {
 
 const Page: NextPage<PageProps> = _ => {
 	const darkMode = useDarkMode()
-	const [sentence, setSentence] = useState( 'at 22:00' )
-	const [output, setOutput] = useState( () => {
-		try {
-			return sentenceToCron( sentence )
-		} catch ( error ) {
-			return error.message
-		}
-	} )
+	const [sentence, setSentence] = useState( '' )
+	const [output, setOutput] = useState( '* * * * *' )
 
 	useEffect( () => {
 		try {
 			setOutput( sentenceToCron( sentence ) )
 		} catch ( error ) {
-			setOutput( error.message )
+			console.error( error )
+			setOutput( '* * * * *' )
 		}
 	}, [sentence] )
 
 	const themeMeta = useMemo( () => ( {
 		name: 'theme-color',
-		content: darkMode.enabled ? '#000000' : '#F8FAFC'
+		content: darkMode.enabled ? '#18181b' : '#fafafa'
 	} ), [darkMode.enabled] )
 
 	return (
@@ -105,17 +100,34 @@ const Page: NextPage<PageProps> = _ => {
 				</h1>
 				<div className="fade-in-up sm:px-0 flex flex-col items-start w-full gap-2 px-6">
 					<label className=' text-sm font-semibold' htmlFor="sentence">Sentence</label>
-					<div className="sm:flex-row flex flex-col items-center justify-start w-full gap-4">
+					<div className={cx(
+						"sm:flex-row flex flex-col items-center justify-start w-full gap-0 border",
+						'rounded overflow-hidden',
+						'border-zinc-900/50 focus-within:border-zinc-900',
+						'dark:border-zinc-50/50 dark:focus-within:border-zinc-50',
+					)}>
 						<input
-							name='sentence'
-							className='border-slate-900/50 focus:border-slate-900 dark:border-white/50 dark:focus:border-white flex-1 w-full px-4 py-2 bg-transparent border rounded outline-none'
-							placeholder={sentences[Math.floor( Math.random() * sentences.length )]}
 							type="text"
-							onChange={e => setSentence( e.target.value )}
+							name='sentence'
 							value={sentence}
+							onChange={e => setSentence( e.target.value )}
+							placeholder={sentences[Math.floor( Math.random() * sentences.length )]}
+							className={cx(
+								'pl-4 py-2 pr-0 w-full',
+								'outline-none bg-transparent',
+							)}
 						/>
-
-						<button className='dark:bg-white hover:opacity-80 dark:text-black px-4 py-2 text-white bg-black rounded-md' onClick={() => setSentence( sentences[Math.floor( Math.random() * sentences.length )] )}>Random Sentence</button>
+						<button
+							type='reset'
+							onClick={() => setSentence( sentences[Math.floor( Math.random() * sentences.length )] )}
+							className={cx(
+								'px-4 py-2',
+								'outline-none bg-transparent',
+								'dark:hover:text-white/50 hover:text-zinc-900/50',
+							)}
+						>
+							<RefreshIcon />
+						</button>
 					</div>
 
 					<button
