@@ -7,6 +7,11 @@ describe( 'parseSentence', () => {
 		expect( result ).toBe( '* 11 * * */1' )
 	} )
 
+	it( 'should handle just time', () => {
+		const result = parseSentence( 'at 15' )
+		expect( result ).toBe( '* 15 * * *' )
+	} )
+
 	it( 'should handle simple sentence', () => {
 		const result = parseSentence( 'At 23 every 2 months' )
 		expect( result ).toBe( '* 23 * */2 *' )

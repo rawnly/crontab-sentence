@@ -5,7 +5,7 @@ import { to24hr } from './time-util'
 
 type Time = { minutes: string; hours: string }
 export function getTime( sentence: string ): Time {
-	const regex = /((?<hours>\d{1,2})\:(?<minutes>\d{1,2})|(?<time>\d+\s(a|p)m))|(at\s(?<hr>\d{1,2}((a|p)m)?)\s)/i
+	const regex = /((?<hours>\d{1,2})\:(?<minutes>\d{1,2})|(?<time>\d+\s(a|p)m))|(at\s(?<hr>\d{1,2}((a|p)m)?)(\s|$))/i
 	const groups = sentence.match( regex )?.groups
 
 	if ( !groups ) {
