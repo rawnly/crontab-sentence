@@ -10,12 +10,10 @@ import useDarkMode from 'src/hooks/useDarkMode';
 
 const sentences = [
 	'At 22:00 on Friday',
-	'At 22:00 in every month',
-	'At 22:00 in every 3rd month',
-	'At 22:00 on every 2nd day-of-month',
-	'At 22:00 on every 2nd day-of-week',
-	'At 22:00 on day-of-month 3 in january',
-	'At 22:00 on tuesday in march',
+	'At 22:00 every monday',
+	'At 1pm on friday',
+	'At 12pm on monday',
+	'At 23 every 2 months'
 ]
 
 
