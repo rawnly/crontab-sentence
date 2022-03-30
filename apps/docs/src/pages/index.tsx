@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { NextPage } from 'next';
-import { CopyIcon, DownloadIcon, MoonIcon, SunIcon } from '@components/icons';
-import sentenceToCron from 'crontab-sentence'
-import toast from 'react-hot-toast';
+import { CopyIcon } from '@components/icons';
 import ThemeSwitch from '@components/ThemeSwitch';
+import sentenceToCron from 'crontab-sentence';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import React, { useEffect, useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
+import useDarkMode from 'src/hooks/useDarkMode';
 
 const sentences = [
 	'At 22:00 on Friday',
@@ -36,7 +38,7 @@ export const copyToClipboard = async ( text: string ) => {
 }
 
 const Page: NextPage<PageProps> = _ => {
-	const [copied, setCopied] = useState( false )
+	const darkMode = useDarkMode()
 	const [sentence, setSentence] = useState( 'at 22:00' )
 	const [output, setOutput] = useState( () => {
 		try {
@@ -54,21 +56,60 @@ const Page: NextPage<PageProps> = _ => {
 		}
 	}, [sentence] )
 
+	const themeMeta = useMemo( () => ( {
+		name: 'theme-color',
+		content: darkMode.enabled ? 'black' : 'white'
+	} ), [darkMode.enabled] )
+
 	return (
 		<div className=' flex flex-col items-center justify-center w-screen h-screen gap-4'>
 			<ThemeSwitch />
+			<NextSeo
+				title='Home'
+				titleTemplate='Sentence to Cron | %s'
+				description='Convert a sentence to a cron expression'
+				additionalMetaTags={[themeMeta]}
+				openGraph={{
+					title: 'Sentence to Cron',
+					description: 'Convert a sentence to a cron expression',
+					locale: 'en_US',
+					url: 'https://sentencetocron.fedevitale.dev',
+					site_name: 'Sentence to Cron',
+					images: [
+						{
+							url: 'https://sentencetocron.fedevitale.dev/assets/banner-dark.png',
+							type: 'image/png',
+							alt: 'Dark Banner',
+						},
+						{
+							url: 'https://sentencetocron.fedevitale.dev/assets/banner-light.png',
+							type: 'image/png',
+							alt: 'Light Banner',
+						},
+					]
+				}}
+				twitter={{
+					site: 'https://sentencetocron.fedevitale.dev',
+					handle: '@fedevitaledev',
+					cardType: 'summary',
+				}}
+			/>
+
+			<a href='https://github.com/rawnly/crontab-sentence' target={'_blank'} className='hover:opacity-50 top-5 left-5 fade-in fixed'>Source Code</a>
 
 			<main className="sm:mt-24 w-full max-w-2xl px-4 mx-auto mt-16">
-				<h1 className='relative mx-auto mb-8 text-6xl font-bold text-center'>
-					<span id='subject'>Sentence Parser</span>
+				<h1 className='sm:text-6xl sm:mb-8 relative mx-auto mb-4 text-4xl font-bold text-center'>
+					<span data-title='Sentence2Cron' id='subject'>
+						Sentence2Cron
+					</span>
 				</h1>
-				<div className="fade-in-up flex flex-col items-start w-full gap-2">
+				<div className="fade-in-up sm:px-0 flex flex-col items-start w-full gap-2 px-6">
 					<label className=' text-sm font-semibold' htmlFor="sentence">Sentence</label>
-					<div className="flex items-center justify-start w-full gap-4">
+					<div className="sm:flex-row flex flex-col items-center justify-start w-full gap-4">
 						<input
 							name='sentence'
-							className='flex-1 border-slate-900 dark:border-white focus:border-[#00ffa7] outline-none w-full px-4 py-2  bg-transparent border rounded'
-							placeholder='At 22:00'
+							className='border-slate-900/50 focus:border-slate-900 dark:border-white/50 dark:focus:border-white flex-1 w-full px-4 py-2 bg-transparent border rounded outline-none'
+							placeholder={sentences[Math.floor( Math.random() * sentences.length )]}
 							type="text"
 							onChange={e => setSentence( e.target.value )}
 							value={sentence}
@@ -79,20 +120,16 @@ const Page: NextPage<PageProps> = _ => {
 
 					<button
 						onClick={() => copyToClipboard( output )}
-						className='hover:opacity-75 active:opacity-50 flex items-center justify-center px-4 py-2 mx-auto mt-10 text-5xl font-bold bg-transparent rounded-lg'
+						className='hover:opacity-75 active:opacity-50 sm:text-5xl flex items-center justify-center px-4 py-2 mx-auto mt-10 text-3xl font-bold bg-transparent rounded-lg'
 					>
 						{output}
 					</button>
 				</div>
-
-				<div className='left-1/2 bottom-5 absolute -translate-x-1/2'>
-					<span className='fade-in'>
-						Made with a <a className='hover:opacity-50' target={'_blank'} href='https://github.com/Rawnly/crontab-sentence/blob/master/apps/syntax/src/index.ts#L5'>regex</a> by <a href="https://fedevitale.dev" className='dark:text-[#00ffa7] hover:opacity-50 text-[#00c079]' target={'_blank'}>@fedevitale</a>
-					</span>
-				</div>
-
-				<a href='https://github.com/rawnly/crontab-sentence' target={'_blank'} className='hover:opacity-50 bottom-5 right-5 fade-in fixed'>Source Code</a>
 			</main>
+
+			<footer className='bottom-5 fixed px-4 text-center'>
+				Made with a <a className='hover:opacity-50' target={'_blank'} href='https://github.com/Rawnly/crontab-sentence/blob/master/apps/syntax/src/index.ts#L5'>regex</a> by <a href="https://fedevitale.dev" className='dark:text-[#00ffa7] hover:opacity-50 text-[#00c079]' target={'_blank'}>@fedevitale</a>
+			</footer>
 		</div>
 	)
 };

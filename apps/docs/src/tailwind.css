@@ -16,7 +16,7 @@ a {
 
 
 #subject {
-	--text: "Sentence Parser";
+	--text: attr(data-title);
 	--animation-duration: 1s;
 	--animation-delay: .2s;
 	color: transparent;

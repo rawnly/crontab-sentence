@@ -9,6 +9,8 @@
 ```
 
 ## Usage
+Make sure to [check-out tests](/apps/syntax/__tests__/sentence-to-cron.test.ts) to see what's supported.
+
 ```ts
 	import sentenceToCron from 'crontab-sentence'
 
