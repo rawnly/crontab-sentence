@@ -1,6 +1,6 @@
 import { CopyIcon, RefreshIcon } from '@components/icons';
 import ThemeSwitch from '@components/ThemeSwitch';
-import sentenceToCron from 'crontab-sentence';
+import { parseSentence } from 'crontab-sentence';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -13,7 +13,10 @@ const sentences = [
 	'At 22:00 every monday',
 	'At 1pm on friday',
 	'At 12pm on monday',
-	'At 23 every 2 months'
+	'At 23 every 2 months',
+	'every tuesday in june',
+	'At 23:59 every 14 days in march',
+	'At 3pm every 2 weeks in april',
 ]
 
 
@@ -42,7 +45,7 @@ const Page: NextPage<PageProps> = _ => {
 
 	useEffect( () => {
 		try {
-			setOutput( sentenceToCron( sentence ) )
+			setOutput( parseSentence( sentence ) )
 		} catch ( error ) {
 			console.error( error )
 			setOutput( '* * * * *' )

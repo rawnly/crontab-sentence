@@ -12,7 +12,7 @@
     "autoprefixer": "^10.4.4",
     "classnames": "^2.3.1",
     "clsx": "^1.1.1",
-    "crontab-sentence": "0.0.2",
+    "crontab-sentence": "0.0.3",
     "next": "^12.1.0",
     "next-seo": "^5.3.0",
     "postcss": "^8.4.12",
