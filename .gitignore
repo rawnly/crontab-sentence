@@ -2,6 +2,9 @@
 .DS_Store
 node_modules
 
-apps/**/dist
-apps/**/.next
-apps/**/.turbo
+dist
+.next
+.turbo
+
+.env*
+!.env.example
