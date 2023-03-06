@@ -1,12 +1,9 @@
 import { ALIASES, MONTHS, Unit, WEEKDAYS } from './lib/costants'
 import { getRepetition, getMonth, getTime, getWeekDay } from './lib/extractors'
+import { deprecate } from 'util'
 
 /** @deprecated in v0.0.3 */
 function sentenceToCron( sentence: string ): string {
-	if ( process.env.NODE_ENV !== 'test' ) {
-		console.warn( 'This method is deprecated and you should not be using it! Use `parseSentence` instead.' )
-	}
-
 	const regex = /(at|every\s(?<wkd>\w+))\s(minute (?<minute>\d+)|(?<hh>\d+)\:(?<mm>\d+))(\son?\s(every\s(?<month_day_n>\d+((rd|nd|th)))|day-of-month\s(?<month_day>\d+)|(?<weekday>\w+)))?(\sin\s((every\s)?(?<month_n>\d(rd|nd|th))|(?<month>\w+))(month)?)?/i
 
 	if ( !regex.test( sentence ) ) {
@@ -31,7 +28,7 @@ function sentenceToCron( sentence: string ): string {
 	return `${minute} ${hour} ${month_day} ${month} ${weekday}`
 }
 
-export default sentenceToCron
+export default deprecate( sentenceToCron, 'sentenceToCron() is deprecated. Please use parseSentence() instead.', 'DEPR001' )
 
 
 export const parseSentence = ( sentence: string ): string => {

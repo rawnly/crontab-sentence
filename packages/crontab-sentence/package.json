@@ -15,7 +15,7 @@
     "build": "swc src -d dist",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepublish": "yarn copy:readme && yarn test && yarn build",
+    "prepublish": "pnpm copy:readme && pnpm test && pnpm build",
     "copy:readme": "cp -rf ../../README.md README.md"
   },
   "dependencies": {

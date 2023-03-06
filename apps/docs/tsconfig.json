@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -20,15 +20,30 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "~types/*": ["src/types/*"],
-      "@lib/*": ["src/lib/*"]
-    }
+      "@components/*": [
+        "src/components/*"
+      ],
+      "~types/*": [
+        "src/types/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
