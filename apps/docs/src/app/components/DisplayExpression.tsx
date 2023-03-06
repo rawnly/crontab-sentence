@@ -9,9 +9,12 @@ function DisplayExpression() {
 
   return (
     <h1
-      className={clsx("font-mono text-slate-900 font-bold text-5xl", {
-        "animate-pulse": data.loading,
-      })}
+      className={clsx(
+        "font-mono dark:text-white text-slate-900 font-bold text-5xl",
+        {
+          "animate-pulse": data.loading,
+        }
+      )}
     >
       {data.loading || !data.expression ? "* * * * *" : data.expression}
     </h1>

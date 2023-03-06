@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "pnpm run build --filter docs",
     "dev": "turbo run dev --parallel",
     "test": "turbo run test --parallel",
     "lint": "turbo run lint",

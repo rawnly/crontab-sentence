@@ -64,7 +64,7 @@ function AskGPTForm() {
           autoComplete="off"
           placeholder="Every 3 months on 18th at 4am"
         />
-        <small className="text-slate-500/75">
+        <small className="small:text-slate-200/75 text-slate-500/75">
           Try a{" "}
           <button
             className="underline hover:opacity-80 active:opacity-50"

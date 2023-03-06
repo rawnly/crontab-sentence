@@ -8,7 +8,7 @@ export default function Page() {
       <div className="relative px-6 lg:px-8">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-full py-1 px-3 text-sm leading-6 dark:text-slate-300 text-slate-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               <b>Sentence 2 Cron</b> is Open-Source{" "}
               <a
                 href="https://github.com/rawnly/cron-sentence"
@@ -22,14 +22,14 @@ export default function Page() {
           <div className="text-center">
             <Balancer
               as="h1"
-              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              className="text-4xl font-bold tracking-tight dark:text-white text-slate-900 sm:text-6xl"
             >
               Natural language into <i className="block">Cron Expressions</i>{" "}
               using <code className="text-blue-600">AI</code>
             </Balancer>
             <Balancer
               as="p"
-              className="mt-6 max-w-sm text-lg leading-8 text-gray-600"
+              className="mt-6 max-w-sm text-lg leading-8 dark:text-slate-300 text-slate-600"
             >
               Say goodbye to complicated syntax and hello to effortness
               scheduling! 100% free, forever
