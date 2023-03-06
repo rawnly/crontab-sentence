@@ -75,11 +75,7 @@ function AskGPTForm() {
           </button>
         </small>
       </div>
-      <Button
-        loading={expression.loading || isSubmitting}
-        disabled={isSubmitting || !isDirty}
-        type="submit"
-      >
+      <Button loading={expression.loading || isSubmitting} type="submit">
         Generate
       </Button>
     </form>
