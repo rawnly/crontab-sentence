@@ -1,37 +1,35 @@
 import Providers from "./components/Providers";
 import "@/tailwind.css";
 
+const description = "Natural language to cron expression powered by GPT-3";
+const title = "Sentence to Cron";
+
 export const metadata = {
   title: {
-    default: "Sentence to Cron | Home",
-    template: ' "Sentence to Cron | %s"',
+    default: title,
+    template: `${title} | %s`,
   },
   themeColor: "#000",
-  description: "Natural language to cron expression powered by GPT-3",
+  description,
   twitter: {
     site: "https://crontab-ai.fedevitale.dev/",
     card: "summary",
-    title: "Sentence to Cron | %s",
-    description: "Natural language to cron expression powered by GPT-3",
+    title,
+    description,
     creator: "@fedevitaledev",
   },
   openGraph: {
-    title: "Sentence to Cron",
-    description: "Natural language to cron expression powered by GPT-3",
+    title: title,
+    description,
     locale: "en_US",
     url: "https://crontab-ai.fedevitale.dev/",
-    siteName: "Sentence to Cron",
+    siteName: title,
     images: [
       {
-        url: "https://crontab-ai.fedevitale.dev/assets/banner.png",
+        url: "/banner.png",
         type: "image/png",
         alt: "Dark Banner",
       },
-      // {
-      //   url: "https://sentencetocron.fedevitale.dev/assets/banner-light.png",
-      //   type: "image/png",
-      //   alt: "Light Banner",
-      // },
     ],
   },
 };
