@@ -1,5 +1,6 @@
 import Providers from "./components/Providers";
 import "@/tailwind.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const description = "Natural language to cron expression powered by GPT-3";
 const title = "Sentence to Cron";
@@ -26,7 +27,7 @@ export const metadata = {
     siteName: title,
     images: [
       {
-        url: "/banner.png",
+        url: "/og-image.png",
         type: "image/png",
         alt: "Dark Banner",
       },
@@ -43,6 +44,7 @@ export default function RootLayout({
     <html lang="en" className="selection:bg-primary-600 selection:text-white">
       <body>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
