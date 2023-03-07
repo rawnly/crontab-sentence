@@ -9,7 +9,7 @@ export const metadata = {
   themeColor: "#000",
   description: "Natural language to cron expression",
   twitter: {
-    site: "https://sentencetocron.fedevitale.dev",
+    site: "https://crontab-ai.fedevitale.dev/",
     card: "summary",
     title: "Sentence to Cron | %s",
     description: "Natural language to cron expression",
@@ -19,19 +19,19 @@ export const metadata = {
     title: "Sentence to Cron",
     description: "Convert a sentence to a cron expression",
     locale: "en_US",
-    url: "https://sentencetocron.fedevitale.dev",
+    url: "https://crontab-ai.fedevitale.dev/",
     siteName: "Sentence to Cron",
     images: [
       {
-        url: "https://sentencetocron.fedevitale.dev/assets/banner-dark.png",
+        url: "https://crontab-ai.fedevitale.dev/assets/banner.png",
         type: "image/png",
         alt: "Dark Banner",
       },
-      {
-        url: "https://sentencetocron.fedevitale.dev/assets/banner-light.png",
-        type: "image/png",
-        alt: "Light Banner",
-      },
+      // {
+      //   url: "https://sentencetocron.fedevitale.dev/assets/banner-light.png",
+      //   type: "image/png",
+      //   alt: "Light Banner",
+      // },
     ],
   },
 };
