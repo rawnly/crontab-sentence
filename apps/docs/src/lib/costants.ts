@@ -62,10 +62,8 @@ export const SUFFIX = `${EXPLANATION.join("\n")}\n\n${PROMPTS.map(
 export const SYSTEM_MSG = {
   role: "system",
   content: `
-You are a bot that translates natural language to cron expression
-
+You are a bot that translates natural language to cron expression.
 Use the following text as guide to build the cron-expression
-
 
 [minute (0-59)] [hour (0-23)] [day (month 0-31)] [month (0-12)] [day (week, 0-5)]
 
@@ -73,9 +71,10 @@ Use the following text as guide to build the cron-expression
 - => range of values (eg: 1-2)
 / => step values (eg: */2)
  
-  Week repetition is expressed in days-of-the-month
- Time has 24h format
- An expression cannot contain an empty value
+You MUST return only the cron-expression as answer.
+Week repetition is expressed in days-of-the-month.
+Time has 24h format.
+An expression cannot contain an empty value.
 `,
 };
 
