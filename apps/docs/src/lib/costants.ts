@@ -1,3 +1,8 @@
+import {
+  ChatCompletionRequestMessage,
+  CreateChatCompletionRequest,
+} from "openai";
+
 export const EXPLANATION = [
   "# Convert a prompt into a cron-expression",
   "# A cron expression is made as the follwing",
@@ -50,6 +55,43 @@ export const PROMPTS = [
   },
 ];
 
-const SUFFIX = `${EXPLANATION.join("\n")}\n\n${PROMPTS.map(
+export const SUFFIX = `${EXPLANATION.join("\n")}\n\n${PROMPTS.map(
   (p) => `PROMPT: ${p.prompt}\nCRON: ${p.cron}`
 ).join("\n")}`;
+
+export const SYSTEM_MSG = {
+  role: "system",
+  content: `
+You are a bot that translates natural language to cron expression
+
+Use the following text as guide to build the cron-expression
+
+
+[minute (0-59)] [hour (0-23)] [day (month 0-31)] [month (0-12)] [day (week, 0-5)]
+
+* => any value
+- => range of values (eg: 1-2)
+/ => step values (eg: */2)
+ 
+  Week repetition is expressed in days-of-the-month
+ Time has 24h format
+ An expression cannot contain an empty value
+`,
+};
+
+export const MESSAGES: ChatCompletionRequestMessage[] = PROMPTS.reduce(
+  (acc, curr) => {
+    const userMsg: ChatCompletionRequestMessage = {
+      role: "user",
+      content: curr.prompt,
+    };
+
+    const assistantMsg: ChatCompletionRequestMessage = {
+      role: "assistant",
+      content: curr.cron,
+    };
+
+    return [...acc, userMsg, assistantMsg];
+  },
+  [] as ChatCompletionRequestMessage[]
+);

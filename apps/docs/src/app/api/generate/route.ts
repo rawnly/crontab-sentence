@@ -1,4 +1,4 @@
-import { askOpenAI } from "@/lib/openai";
+import { askChatAI } from "@/lib/openai";
 import { Payload } from "./types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -17,10 +17,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const response = await askOpenAI(payload.data.prompt);
+  const response = await askChatAI(payload.data.prompt);
   const [completion] = response.data.choices;
 
   return NextResponse.json({
-    expression: completion.text?.trim(),
+    expression: completion.message?.content,
   });
 }
