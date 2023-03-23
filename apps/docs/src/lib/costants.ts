@@ -59,10 +59,11 @@ export const SUFFIX = `${EXPLANATION.join("\n")}\n\n${PROMPTS.map(
   (p) => `PROMPT: ${p.prompt}\nCRON: ${p.cron}`
 ).join("\n")}`;
 
+// generate a cron expression for me based on my description, nothing else
 export const SYSTEM_MSG = {
   role: "system",
   content: `
-You are a bot that translates natural language to cron expression.
+You are a bot that generate a cron expression for me based on my description, nothing else.
 Use the following text as guide to build the cron-expression
 
 [minute (0-59)] [hour (0-23)] [day (month 0-31)] [month (0-12)] [day (week, 0-5)]
